@@ -1,0 +1,61 @@
+import random
+x=input("Введите сколько стоит один доллар на данный момент: ")
+y=input("Введите сколько рублей у вас сейчас: ")
+print("Курс доллара",x)
+print("Сколько рублей в наличии",y)
+#сколько у клиента долларов по текущему курсу
+z=int(y)/int(x)
+print("Количество долларов",z)
+#kortezh
+yes="Yes","yes","1"
+no="No","no","2"
+another="Another","another","3"
+kortezh="yes","no","another"
+#В этой строчке необходимо узнать хочет ли клиент увеличить количество долларов
+q=client_request=input("Согласен ли клиент увеличить сумму имеющихся средств(Yes/No): ")
+if q in yes:
+    print("Продолжаем")
+    q1=client_request_1=input("Вы хотите добавить доллары к сумме или умножить(Прибавить=1,Умножить=2,Отмена =3)Введите число: ")
+    if q1 in yes:
+        Plus=input("Введите число,которое необходимо прибавить к вашим средствам: ")
+        Money=z+Plus
+        print(Money)
+    elif q1 in no:
+        Coefficient=input("Введите процентную ставку: ")
+        cf=Coefficient1=int(Coefficient)/100
+        Money=z*cf
+        print(Money)
+        q2=client_request_2=input("Есть необходимость продолжать?(Yes/no): ")
+        if q2 in yes:
+            q3=client_request_3=input("Выберите действие(Умножить=1,Умножать до определенного значения на определенное число=2,Умножать до определенного диапазона случайные числа в диапазоне=3): ")
+          
+            if q3 in yes:
+                cf=Coefficient1=int(Coefficient)/100
+                Money=Money*cf
+                print(Money)
+            elif q3 in no:
+                cf=Coefficient1=int(Coefficient)/100
+                diapazon=input("Введите предельное значение: ")
+                while Money<diapazon:
+                    Money=Money*cf
+                    print(Money)
+            elif q3 in another:
+                diapazon=input("Введите предельное значение: ")
+                f1=int(input("Enter min: "))
+                f2=int(input("Enter max: "))
+                r=int(random.randint(f1,f2))
+                while int(Money)<int(diapazon):
+                    Money=(Money)*r
+                    print(Money)
+            else:
+                print("end")
+        else:
+            print("Всего хорошего")
+                                      
+            
+    else:
+        print("Всего хорошего")
+else:
+    print("Всего хорошего")
+           
+
