@@ -1,52 +1,53 @@
 import random
-x=input("Введите сколько стоит один доллар на данный момент: ")
-y=input("Введите сколько рублей у вас сейчас: ")
+x=input("Введите цену доллара в рублях на данный момент: ")
+y=input("Введите ваш баланс в рублях: ")
 print("Курс доллара",x)
 print("Сколько рублей в наличии",y)
 #сколько у клиента долларов по текущему курсу
 z=int(y)/int(x)
 print("Количество долларов",z)
-#kortezh
+#кортеж
 yes="Yes","yes","1"
 no="No","no","2"
 another="Another","another","3"
 kortezh="yes","no","another"
-#В этой строчке необходимо узнать хочет ли клиент увеличить количество долларов
-q=client_request=input("Согласен ли клиент увеличить сумму имеющихся средств(Yes/No): ")
+#В этой строчке необходимо узнать хочет ли клиент продолжать взаимодействовать с программой или этого достаточно?
+q=client_request=input("Желаете ли продолжить работу в сервисе(Yes/No): ")
 if q in yes:
     print("Продолжаем")
-    q1=client_request_1=input("Вы хотите добавить доллары к сумме или умножить(Прибавить=1,Умножить=2,Отмена =3)Введите число: ")
+    print("Все дальнейшие операции будут производиться в долларах")
+    q1=client_request_1=input("Вы желаете добавить доллары к имеющейся сумме или умножить на n процентов?(Прибавить=1,Умножить=2,Отмена =3)Введите число: ")
     if q1 in yes:
-        Plus=input("Введите число,которое необходимо прибавить к вашим средствам: ")
-        Money=z+Plus
+        Plus=int(input("Введите количество долларов,которое необходимо добавить к вашим средствам: "))
+        Money=int(z)+int(Plus)
         print(Money)
     elif q1 in no:
-        Coefficient=input("Введите процентную ставку: ")
+        Coefficient=input("Введите на сколько процентов необходимо умножить(100%=1.00): ")
         cf=Coefficient1=int(Coefficient)/100
         Money=z*cf
         print(Money)
-        q2=client_request_2=input("Есть необходимость продолжать?(Yes/no): ")
+        q2=client_request_2=input("Желаете продолжить работу в сервисе?(Yes/no): ")
         if q2 in yes:
-            q3=client_request_3=input("Выберите действие(Умножить=1,Умножать до определенного значения на определенное число=2,Умножать до определенного диапазона случайные числа в диапазоне=3): ")
+            q3=client_request_3=input("Выберите действие(Умножить=1,Умножать до определенного значения и на определенное число=2,Умножать до определенного значения на случайные числа в выбранном диапазоне=3): ")
           
             if q3 in yes:
                 cf=Coefficient1=int(Coefficient)/100
                 Money=Money*cf
-                print(Money)
+                print("Денег на счете: ",Money)
             elif q3 in no:
                 cf=Coefficient1=int(Coefficient)/100
                 diapazon=input("Введите предельное значение: ")
                 while Money<diapazon:
                     Money=Money*cf
-                    print(Money)
+                    print("Денег на счете: ",Money)
             elif q3 in another:
                 diapazon=input("Введите предельное значение: ")
-                f1=int(input("Enter min: "))
-                f2=int(input("Enter max: "))
-                r=int(random.randint(f1,f2))
+                f1=int(input("Введите минимальное значение диапазона: "))
+                f2=int(input("Введите максимальное значение диапазона: "))
                 while int(Money)<int(diapazon):
-                    Money=(Money)*r
-                    print(Money)
+                    r=int(random.randint(f1,f2))/100
+                    Money=Money*r
+                    print("Денег на счете: ",Money,"Ставка: ",r)
             else:
                 print("end")
         else:
